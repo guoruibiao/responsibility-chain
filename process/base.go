@@ -42,6 +42,7 @@ func Run(ctx *context.Context, reqParams *params.CommonParams)(res interface{}, 
 
 func (p *processor)run(ctx *context.Context, reqParams *params.CommonParams) (res interface{}, err error) {
 	for idx, _ := range p.sortedChain {
+		fmt.Printf("handling [%s]\n", p.sortedChain[idx])
 		res, err = p.bucket[p.sortedChain[idx]](ctx, reqParams)
 		if err != nil {
 			return nil, err
